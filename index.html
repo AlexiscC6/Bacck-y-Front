@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/api.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Facilitador de tareas</h1><p>Organiza tus tareas facilmente</p>
+  </header>
+  <main class="container">
+    <section class="stats" aria-label="Resumen de tareas">
+      <div class="stat"><span>Total de tareas</span><strong id="total">—</strong></div>
+      <div class="stat"><span>Pendientes</span><strong id="pending">—</strong></div>
+      <div class="stat"><span>Completadas</span><strong id="completed">—</strong></div>
+    </section>
+    <div class="workspace">
+      <aside class="composer panel">
+        <h2>Agregar tarea</h2>
+        <form id="create-form" novalidate>
+          <label for="title">Título <span class="required">*</span></label>
+          <input id="title" name="title" placeholder="¿Qué necesitas hacer?" required aria-describedby="title-error">
+          <p id="title-error" class="field-error" hidden></p>
+          <label for="description">Descripción <span class="optional">(opcional)</span></label>
+          <textarea id="description" name="description" rows="5" placeholder="Añade detalles que te ayuden…"></textarea>
+          <button class="primary full" type="submit" id="add-button">+ Agregar tarea</button>
+        </form>
+      </aside>
+      <section class="tasks-area" aria-labelledby="tasks-heading">
+        <div class="list-header"><div><h2 id="tasks-heading">Mis tareas</h2><p class="muted" id="list-summary">Lista de tareas registradas.</p></div><button id="refresh-button" class="secondary" type="button">↻ Actualizar</button></div>
+        <div class="filters" role="group" aria-label="Filtrar tareas">
+          <button type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button type="button" data-filter="pending" aria-pressed="false">Pendientes</button>
+          <button type="button" data-filter="completed" aria-pressed="false">Completadas</button>
+        </div>
+        <div id="list-state" class="empty panel" role="status">Cargando tareas…</div>
+        <div id="task-list" class="task-list" aria-busy="true"></div>
+      </section>
+    </div>
+    <div id="message" class="message" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  </main>
+  <footer>Proyecto de gestión de tareas</footer>
+  <dialog id="edit-dialog" aria-labelledby="edit-heading">
+    <form id="edit-form" novalidate>
+      <h2 id="edit-heading">Editar tarea</h2>
+      <label for="edit-title">Título <span class="required">*</span></label>
+      <input id="edit-title" required aria-describedby="edit-error">
+      <p id="edit-error" class="field-error" hidden></p>
+      <label for="edit-description">Descripción <span class="optional">(opcional)</span></label>
+      <textarea id="edit-description" rows="5"></textarea>
+      <div class="dialog-actions"><button id="cancel-edit" class="secondary" type="button">Cancelar</button><button id="save-button" class="primary" type="submit">Guardar cambios</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
+
