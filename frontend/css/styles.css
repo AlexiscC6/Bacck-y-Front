@@ -1,0 +1,303 @@
+﻿/* Colores principales del proyecto */
+:root {
+  --azul: #3267ad;
+  --borde: #cccccc;
+  --fondo: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: #333333;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, p {
+  margin: 0 0 10px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* Encabezado y contenido centrado */
+.header {
+  padding: 20px;
+  background: var(--azul);
+  color: white;
+  text-align: center;
+}
+
+.header p {
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+
+/* Resumen: una columna en teléfono y tres en pantallas grandes */
+.stats {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  padding: 12px;
+  background: white;
+  border: 1px solid var(--borde);
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+}
+
+/* Formulario y lista */
+.panel {
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--borde);
+}
+
+.composer {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.optional, .muted, .task-date {
+  color: #666666;
+  font-size: 14px;
+}
+
+.optional {
+  font-weight: normal;
+}
+
+.required, .field-error {
+  color: #a92323;
+}
+
+.field-error {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+input[aria-invalid="true"] {
+  border-color: #a92323;
+}
+
+/* Botones */
+button {
+  padding: 8px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  background: #eeeeee;
+  color: #333333;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+button:hover {
+  background: #dddddd;
+}
+
+.primary {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: white;
+}
+
+.primary:hover {
+  background: #254f88;
+}
+
+.full {
+  margin-top: 15px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+.list-header {
+  margin-bottom: 15px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.filters button[aria-pressed="true"] {
+  background: var(--azul);
+  color: white;
+}
+
+/* Tarjetas de tareas */
+.task-card {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: white;
+  border: 1px solid var(--borde);
+}
+
+.task-card h3, .description {
+  overflow-wrap: anywhere;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+
+.task-meta {
+  margin: 12px 0;
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 10px;
+  color: #805700;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.is-completed {
+  background: #edf5ed;
+}
+
+.is-completed h3, .is-completed .description {
+  text-decoration: line-through;
+  color: #666666;
+}
+
+.is-completed .badge {
+  color: #28612e;
+}
+
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.delete {
+  color: #a92323;
+}
+
+.empty {
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* Mensajes dentro de la página */
+.message {
+  margin-top: 20px;
+  padding: 12px;
+  background: #edf5ed;
+  border: 1px solid #89ad89;
+  color: #28612e;
+}
+
+.message.error {
+  background: #fff0f0;
+  border-color: #cc9999;
+  color: #a92323;
+}
+
+/* Ventana para editar */
+dialog {
+  width: 90%;
+  max-width: 450px;
+  padding: 20px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #666666;
+  font-size: 14px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Adaptación para tablet y computadora */
+@media (min-width: 600px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
