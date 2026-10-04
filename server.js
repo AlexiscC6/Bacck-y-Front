@@ -5,9 +5,11 @@ const db = require('./database');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Permite peticiones del Frontend y procesa formato JSON[cite: 1]
 app.use(cors());
 app.use(express.json());
 
+// 1. GET /api/tasks — Obtener todas las tareas[cite: 1]
 app.get('/api/tasks', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM tasks ORDER BY created_at DESC');
@@ -22,6 +24,7 @@ app.get('/api/tasks', async (req, res) => {
     }
 });
 
+// 2. POST /api/tasks — Crear nueva tarea[cite: 1]
 app.post('/api/tasks', async (req, res) => {
     const { title, description } = req.body;
 
@@ -46,6 +49,7 @@ app.post('/api/tasks', async (req, res) => {
     }
 });
 
+// 3. PUT /api/tasks/:id — Actualizar tarea o estado[cite: 1]
 app.put('/api/tasks/:id', async (req, res) => {
     const { id } = req.params;
     const { title, description, completed } = req.body;
@@ -81,6 +85,7 @@ app.put('/api/tasks/:id', async (req, res) => {
     }
 });
 
+// 4. DELETE /api/tasks/:id — Eliminar tarea por ID[cite: 1]
 app.delete('/api/tasks/:id', async (req, res) => {
     const { id } = req.params;
 
